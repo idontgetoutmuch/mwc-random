@@ -21,7 +21,7 @@ let
   pkgs = nixpkgs;
 
   haskellDeps = ps: with ps; [
-    base mwc-random random
+    base math-functions mwc-random random
   ];
 
 in
