@@ -83,7 +83,10 @@ main = do
           | l <- [0.01, 0.2, 0.8, 1.3, 2.4, 8, 12, 100, 1000]
           ]
         , [ bench ("binomial " ++ show p ++ " " ++ show n) $ nfIO (genFromTable (tableBinomial n p) mwc :: IO Int)
-          | (n,p) <- [ (4, 0.5), (10,0.1), (10,0.6), (10, 0.8), (100,0.4)]
+          | (n,p) <- [ (4, 0.5), (10,0.1), (10,0.6), (10, 0.8), (100,0.4), (1400, 0.4)]
+          ]
+        , [ bench ("binomiak " ++ show p ++ " " ++ show n) $ nfIO (binomial n p mwc :: IO Int)
+          | (n,p) <- [ (4, 0.5), (10,0.1), (10,0.6), (10, 0.8), (100,0.4), (1400, 0.4)]
           ]
         ]
       , bgroup "CT/table" $ concat
